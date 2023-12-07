@@ -51,4 +51,27 @@ table {
 
 body {
   font-family: "Nunito", sans-serif;
+  font-size: 1.5rem;
+  display: grid;
+  grid-template-columns: 0.65fr repeat(4, 1fr);
+  grid-template-rows: 0.5fr repeat(4, 1fr) 0.3fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 100vh;
+}
+
+.header {
+  grid-area: 1 / 1 / 2 / 6;
+}
+
+.sidebar {
+  grid-area: 2 / 1 / 6 / 2;
+}
+
+.main {
+  grid-area: 2 / 2 / 6 / 6;
+}
+
+.footer {
+  grid-area: 6 / 1 / 7 / 6;
 }
