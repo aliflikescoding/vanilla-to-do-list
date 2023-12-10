@@ -62,10 +62,38 @@ body {
 
 .header {
   grid-area: 1 / 1 / 2 / 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show {
+  display: none;
+  pointer-events: none;
+  opacity: 0;
 }
 
 .sidebar {
   grid-area: 2 / 1 / 6 / 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar > * {
+  margin-top: 15px;
+}
+.sidebar > * > * {
+  margin-top: 15px;
+}
+
+.side-bar-title {
+  font-size: 2.5rem;
+  font-weight: 650;
+}
+
+.side-bar-text {
+  font-size: 1.75rem;
+  font-weight: 500;
 }
 
 .main {
