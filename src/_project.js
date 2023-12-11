@@ -1,6 +1,7 @@
 function Project(name) {
   this.name = name;
   this.tasks = [];
+  this.selected = false;
 }
 
 Project.prototype.getName = function () {
@@ -17,6 +18,18 @@ Project.prototype.getTasks = function () {
 
 Project.prototype.addItem = function (item) {
   this.tasks.push(item);
+}
+
+Project.prototype.getSelect = function() {
+  return this.selected;
+}
+
+Project.prototype.select = function() {
+  if (this.selected == false) {
+    this.selected = true;
+  } else {
+    this.selected = false;
+  }
 }
 
 export default Project;
