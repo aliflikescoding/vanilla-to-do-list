@@ -1,49 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>To Do List</title>
-</head>
-<body>
-  <div class="header">
-    <div class="logo">
-      <h1>ToDoList</h1>
-    </div>
-  </div>
-  <div class="sidebar">
-    <div class="home">
-      <h1 class="side-bar-title">Home</h1>
-      <h2 class="side-bar-text" id="allTask">All Task</h2>
-      <h2 class="side-bar-text" id="today">Today</h2>
-      <h2 class="side-bar-text" id="nextSevenDays">Next 7 days</h2>
-    </div>
-    <div class="projects">
-      <h1 class="side-bar-title">Projects</h1>
-      <div id="projectContainer">
-      </div>
-      <form action="" id="projectForm" class="project-form side-bar-text show">
-        <div class="form-input">
-          <label for="projectInput">Project Name:</label>
-          <input type="text" name="" id="projectInput">
-        </div>
-        <div class="form-input">
-          <button id="projectFormAdd" class="button button-success">Add</button>
-          <button id="projectFormCancel" class="button button-error">Cancel</button>
-        </div>
-      </form>
-      <div class="side-bar-text">
-        <button id="projectButton" class="button button-primary">+ New Project</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>To Do List</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">
+        <h1>ToDoList</h1>
       </div>
     </div>
-  </div>
-  <div class="main">
-    <h1>main</h1>
-  </div>
-  <div class="footer">
-    <h1>footer</h1>
-  </div>
-  <script src="main.js"></script>
-</body>
+    <div class="sidebar">
+      <div class="home">
+        <h1 class="side-bar-title">Home</h1>
+        <h2 class="side-bar-text" id="allTask">All Task</h2>
+        <h2 class="side-bar-text" id="today">Today</h2>
+        <h2 class="side-bar-text" id="nextSevenDays">Next 7 days</h2>
+      </div>
+      <div class="projects">
+        <h1 class="side-bar-title">Projects</h1>
+        <div id="projectContainer"></div>
+        <form
+          action=""
+          id="projectForm"
+          class="project-form side-bar-text show"
+        >
+          <div class="form-input">
+            <label for="projectInput">Project Name:</label>
+            <input type="text" name="" id="projectInput" />
+          </div>
+          <div class="form-input">
+            <button id="projectFormAdd" class="button button-success">
+              Add
+            </button>
+            <button id="projectFormCancel" class="button button-error">
+              Cancel
+            </button>
+          </div>
+        </form>
+        <div class="side-bar-text">
+          <button id="projectButton" class="button button-primary">
+            + New Project
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="main-container show">
+        <button class="button button-primary" id="taskButton">
+          + Add Task
+        </button>
+        <div id="taskContainer">
+          <!-- <div class="task-card" id="task-1">
+            <div>
+              <input type="radio" name="" id="task-1" />
+              <label for="task-1">task 1</label>
+            </div>
+            <div>
+              <input type="date" name="" id="date-task-1" />
+              <i>II</i>
+            </div>
+          </div> -->
+        </div>
+        <form action="" class="show" id="taskForm">
+          <div class="task-input">
+            <label for="taskInput">Project Name:</label>
+            <input type="text" name="" id="taskInput" />
+          </div>
+          <div class="task-input">
+            <button id="taskFormAdd" class="button button-success">Add</button>
+            <button id="taskFormCancel" class="button button-error">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="footer">
+      <h1>footer</h1>
+    </div>
+    <script src="main.js"></script>
+  </body>
 </html>
