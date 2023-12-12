@@ -147,8 +147,16 @@ taskFormAdd.addEventListener("click", (event) => {
 });
 
 allTask.addEventListener("click", () => {
-  
+  resetContainer(taskContainer);
   if (taskButton.classList.contains("show") == false) {
     taskButton.classList.add("show");
   }
+
+  projects.forEach(project => {
+    project.getTasks().forEach(task => {
+      taskContainer.appendChild(
+        createTaskDomElement(task.getNameNoSpace(), task.getName())
+      );
+    });
+  })
 });
