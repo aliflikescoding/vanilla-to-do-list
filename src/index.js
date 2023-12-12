@@ -72,7 +72,6 @@ const createTaskDomElement = (idName, name) => {
   taskCard.id = `${idName}`;
 
   taskButton.type = "button";
-  taskButton.id = `${idName}`;
 
   taskLabel.htmlFor = `${idName}`;
   taskLabel.textContent = `${name}`;
