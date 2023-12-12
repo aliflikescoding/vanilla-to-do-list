@@ -37,7 +37,7 @@ const getTask = (idName) => {
   const task = found.getTasks().find((task) => task.getNameNoSpace() == idName);
 
   return task;
-}
+};
 
 const createProjectDomElement = (idName, name) => {
   let projectCard = document.createElement("div");
@@ -58,6 +58,21 @@ const createProjectDomElement = (idName, name) => {
   });
   let projectIcon = document.createElement("i");
   projectIcon.textContent = "II";
+  projectIcon.addEventListener("click", () => {
+    let projectNum;
+    projects.forEach((project, index) => {
+      if (project.getName() == idName) {
+        projectNum = index;
+      }
+    });
+    projects.splice(projectNum, 1);
+    console.log(projects);
+    projectCard.remove();
+    resetContainer(taskContainer);
+    if (taskButton.classList.contains("show") == false) {
+      taskButton.classList.add("show");
+    }
+  });
 
   projectCard.appendChild(h1);
   projectCard.appendChild(projectIcon);
@@ -87,10 +102,10 @@ const createTaskDomElement = (idName, name) => {
   taskDate.id = `date-${idName}`;
 
   taskIcon.textContent = "II";
-  
+
   //events
 
-  taskDate.addEventListener('change', () => {
+  taskDate.addEventListener("change", () => {
     const newDate = taskDate.value;
     const task = getTask(idName);
     task.changeDate(newDate);
@@ -101,19 +116,21 @@ const createTaskDomElement = (idName, name) => {
     const task = getTask(idName);
     task.changeStatus();
     console.log(task);
-  })
+  });
 
   taskIcon.addEventListener("click", () => {
-    const tasks = projects.find((project) => project.getSelect() == true).getTasks();
+    const tasks = projects
+      .find((project) => project.getSelect() == true)
+      .getTasks();
     let taskNum;
     tasks.forEach((task, index) => {
       if (task.getNameNoSpace() == idName) {
         taskNum = index;
       }
-    })
+    });
     tasks.splice(taskNum, 1);
     taskCard.remove();
-  })
+  });
 
   // Structure elements
   taskContent.appendChild(taskButton);
@@ -191,11 +208,11 @@ allTask.addEventListener("click", () => {
     taskButton.classList.add("show");
   }
 
-  projects.forEach(project => {
-    project.getTasks().forEach(task => {
+  projects.forEach((project) => {
+    project.getTasks().forEach((task) => {
       taskContainer.appendChild(
         createTaskDomElement(task.getNameNoSpace(), task.getName())
       );
     });
-  })
+  });
 });
