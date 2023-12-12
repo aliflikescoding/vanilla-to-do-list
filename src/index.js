@@ -13,6 +13,7 @@ const projectFormAdd = document.querySelector("#projectFormAdd");
 const projectFormCancel = document.querySelector("#projectFormCancel");
 const projectInput = document.querySelector("#projectInput");
 const projectContainer = document.querySelector("#projectContainer");
+const allTask = document.querySelector("#allTask");
 
 const showForm = (form) => {
   if (form.classList.contains("show")) {
@@ -23,6 +24,12 @@ const showForm = (form) => {
 const cancel = (form, input) => {
   form.classList.add("show");
   input.value = "";
+};
+
+const resetContainer = (container) => {
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
 };
 
 const createProjectDomElement = (idName, name) => {
@@ -90,9 +97,8 @@ const loadProject = (project) => {
 };
 
 const loadTasks = (project, container) => {
-  while (container.firstChild) {
-    container.removeChild(container.firstChild);
-  }
+  resetContainer(container);
+
   const tasks = project.getTasks();
   tasks.forEach((task) => {
     container.appendChild(
@@ -138,4 +144,11 @@ taskFormAdd.addEventListener("click", (event) => {
 
   loadTasks(found, taskContainer);
   cancel(taskForm, taskInput);
+});
+
+allTask.addEventListener("click", () => {
+  
+  if (taskButton.classList.contains("show") == false) {
+    taskButton.classList.add("show");
+  }
 });
