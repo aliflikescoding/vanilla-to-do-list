@@ -1,8 +1,13 @@
-function Task(name) {
+function Task(nameNoSpace, name) {
+  this.nameNoSpace = nameNoSpace;
   this.name = name;
   this.date = "";
   this.done = false;
 }
+
+Task.prototype.getNameNoSpace = function () {
+  return this.name;
+};
 
 Task.prototype.getName = function () {
   return this.name;
@@ -10,10 +15,6 @@ Task.prototype.getName = function () {
 
 Task.prototype.getDate = function () {
   return this.date;
-};
-
-Task.prototype.getProject = function () {
-  return this.project;
 };
 
 Task.prototype.changeStatus = function () {

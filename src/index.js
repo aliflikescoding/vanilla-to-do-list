@@ -84,13 +84,21 @@ const createTaskDomElement = (idName, name) => {
 const loadProject = (project) => {
   const mainContainer = document.querySelector(".main-container");
   const taskArray = project.getTasks();
-  console.log(project.getName());
-  console.log(taskArray);
 
   if (mainContainer.classList.contains("show")) {
     mainContainer.classList.remove("show");
   }
 };
+
+const loadTasks = (project, container) => {
+  while(container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+  const tasks = project.getTasks();
+  tasks.forEach(task => {
+    container.appendChild(createTaskDomElement(task.getNameNoSpace(), task.getName()))
+  });
+}
 
 projectButton.addEventListener("click", () => {
   showForm(projectForm);
@@ -128,9 +136,9 @@ taskFormAdd.addEventListener("click", (event) => {
 
   const nameNoSpace = taskInput.value.replace(/\s/g, "-");
   const name = taskInput.value;
-  const domElm = createTaskDomElement(nameNoSpace, name);
 
-  found.addItem(new Task(nameNoSpace));
-  taskContainer.appendChild(domElm);
+  found.addItem(new Task(nameNoSpace, name));
+  
+  loadTasks(found, taskContainer);
   cancel(taskForm, taskInput);
 });
