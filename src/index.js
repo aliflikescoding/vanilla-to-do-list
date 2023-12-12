@@ -32,6 +32,13 @@ const resetContainer = (container) => {
   }
 };
 
+const getTask = (idName) => {
+  const found = projects.find((project) => project.getSelect() == true);
+  const task = found.getTasks().find((task) => task.getNameNoSpace() == idName);
+
+  return task;
+}
+
 const createProjectDomElement = (idName, name) => {
   let h1 = document.createElement("h1");
   h1.classList.add("project");
@@ -75,6 +82,15 @@ const createTaskDomElement = (idName, name) => {
   taskDate.id = `date-${idName}`;
 
   taskIcon.textContent = "II";
+  
+  //events
+
+  taskDate.addEventListener('change', () => {
+    const newDate = taskDate.value;
+    const task = getTask(idName);
+    task.changeDate(newDate);
+    console.log(task);
+  });
 
   // Structure elements
   taskContent.appendChild(taskRadio);
