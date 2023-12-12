@@ -82,11 +82,10 @@ const createTaskDomElement = (idName, name) => {
 };
 
 const loadProject = (project) => {
-  const mainContainer = document.querySelector(".main-container");
   loadTasks(project, taskContainer);
 
-  if (mainContainer.classList.contains("show")) {
-    mainContainer.classList.remove("show");
+  if (taskButton.classList.contains("show")) {
+    taskButton.classList.remove("show");
   }
 };
 
