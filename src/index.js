@@ -83,7 +83,7 @@ const createTaskDomElement = (idName, name) => {
 
 const loadProject = (project) => {
   const mainContainer = document.querySelector(".main-container");
-  const taskArray = project.getTasks();
+  loadTasks(project, taskContainer);
 
   if (mainContainer.classList.contains("show")) {
     mainContainer.classList.remove("show");
@@ -91,14 +91,16 @@ const loadProject = (project) => {
 };
 
 const loadTasks = (project, container) => {
-  while(container.firstChild) {
+  while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
   const tasks = project.getTasks();
-  tasks.forEach(task => {
-    container.appendChild(createTaskDomElement(task.getNameNoSpace(), task.getName()))
+  tasks.forEach((task) => {
+    container.appendChild(
+      createTaskDomElement(task.getNameNoSpace(), task.getName())
+    );
   });
-}
+};
 
 projectButton.addEventListener("click", () => {
   showForm(projectForm);
@@ -134,7 +136,7 @@ taskFormAdd.addEventListener("click", (event) => {
   const name = taskInput.value;
 
   found.addItem(new Task(nameNoSpace, name));
-  
+
   loadTasks(found, taskContainer);
   cancel(taskForm, taskInput);
 });
