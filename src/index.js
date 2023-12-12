@@ -63,7 +63,7 @@ const createTaskDomElement = (idName, name) => {
   const taskCard = document.createElement("div");
   const taskContent = document.createElement("div");
   const taskContent2 = document.createElement("div");
-  const taskRadio = document.createElement("input");
+  const taskButton = document.createElement("input");
   const taskLabel = document.createElement("label");
   const taskDate = document.createElement("input");
   const taskIcon = document.createElement("i");
@@ -71,9 +71,8 @@ const createTaskDomElement = (idName, name) => {
   taskCard.classList.add("task-card");
   taskCard.id = `${idName}`;
 
-  taskRadio.type = "radio";
-  taskRadio.name = "task";
-  taskRadio.id = `${idName}`;
+  taskButton.type = "button";
+  taskButton.id = `${idName}`;
 
   taskLabel.htmlFor = `${idName}`;
   taskLabel.textContent = `${name}`;
@@ -92,8 +91,14 @@ const createTaskDomElement = (idName, name) => {
     console.log(task);
   });
 
+  taskButton.addEventListener("click", () => {
+    const task = getTask(idName);
+    task.changeStatus();
+    console.log(task);
+  })
+
   // Structure elements
-  taskContent.appendChild(taskRadio);
+  taskContent.appendChild(taskButton);
   taskContent.appendChild(taskLabel);
   taskContent2.appendChild(taskDate);
   taskContent2.appendChild(taskIcon);
