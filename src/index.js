@@ -97,6 +97,18 @@ const createTaskDomElement = (idName, name) => {
     console.log(task);
   })
 
+  taskIcon.addEventListener("click", () => {
+    const tasks = projects.find((project) => project.getSelect() == true).getTasks();
+    let taskNum;
+    tasks.forEach((task, index) => {
+      if (task.getNameNoSpace() == idName) {
+        taskNum = index;
+      }
+    })
+    tasks.splice(taskNum, 1);
+    taskCard.remove();
+  })
+
   // Structure elements
   taskContent.appendChild(taskButton);
   taskContent.appendChild(taskLabel);
