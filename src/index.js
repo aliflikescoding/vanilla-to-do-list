@@ -128,10 +128,6 @@ projectFormAdd.addEventListener("click", (event) => {
 });
 taskFormAdd.addEventListener("click", (event) => {
   event.preventDefault();
-});
-
-taskFormAdd.addEventListener("click", (event) => {
-  event.preventDefault();
   const found = projects.find((project) => project.getSelect() == true);
 
   const nameNoSpace = taskInput.value.replace(/\s/g, "-");
