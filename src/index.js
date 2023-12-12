@@ -40,6 +40,8 @@ const getTask = (idName) => {
 }
 
 const createProjectDomElement = (idName, name) => {
+  let projectCard = document.createElement("div");
+  projectCard.classList.add("project-card");
   let h1 = document.createElement("h1");
   h1.classList.add("project");
   h1.textContent = name;
@@ -54,8 +56,13 @@ const createProjectDomElement = (idName, name) => {
     found.select();
     loadProject(found);
   });
+  let projectIcon = document.createElement("i");
+  projectIcon.textContent = "II";
 
-  return h1;
+  projectCard.appendChild(h1);
+  projectCard.appendChild(projectIcon);
+
+  return projectCard;
 };
 projectContainer.appendChild(createProjectDomElement("Default", "Default"));
 
