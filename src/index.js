@@ -15,6 +15,7 @@ const projectInput = document.querySelector("#projectInput");
 const projectContainer = document.querySelector("#projectContainer");
 const allTask = document.querySelector("#allTask");
 const today = document.querySelector("#today");
+const nextSevenDays = document.querySelector("#nextSevenDays");
 
 const showForm = (form) => {
   if (form.classList.contains("show")) {
@@ -242,7 +243,31 @@ today.addEventListener("click", () => {
   projects.forEach((project) => {
     project.getTasks().forEach((task) => {
       if (task.getDate() == formattedDate) {
-        console.log('hi')
+        taskContainer.appendChild(
+          createTaskDomElement(
+            task.getNameNoSpace(),
+            task.getName(),
+            task.getDate()
+          )
+        );
+      }
+    });
+  });
+});
+nextSevenDays.addEventListener("click", () => {
+  resetContainer(taskContainer);
+  if (taskButton.classList.contains("show") == false) {
+    taskButton.classList.add("show");
+  }
+
+  const today = new Date();
+  const day = today.getDate();
+  projects.forEach((project) => {
+    project.getTasks().forEach((task) => {
+      const dateString = `${task.getDate()}`;
+      const dayString = dateString.split("-")[2];
+      const dayInt = parseInt(dayString, 10);
+      if (dayInt <= day + 6) {
         taskContainer.appendChild(
           createTaskDomElement(
             task.getNameNoSpace(),
