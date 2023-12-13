@@ -81,7 +81,7 @@ const createProjectDomElement = (idName, name) => {
 };
 projectContainer.appendChild(createProjectDomElement("Default", "Default"));
 
-const createTaskDomElement = (idName, name) => {
+const createTaskDomElement = (idName, name, date) => {
   const taskCard = document.createElement("div");
   const taskContent = document.createElement("div");
   const taskContent2 = document.createElement("div");
@@ -99,6 +99,9 @@ const createTaskDomElement = (idName, name) => {
   taskLabel.textContent = `${name}`;
 
   taskDate.type = "date";
+  if (date != "") {
+    taskDate.value = date;
+  }
   taskDate.id = `date-${idName}`;
 
   taskIcon.textContent = "II";
@@ -158,7 +161,7 @@ const loadTasks = (project, container) => {
   const tasks = project.getTasks();
   tasks.forEach((task) => {
     container.appendChild(
-      createTaskDomElement(task.getNameNoSpace(), task.getName())
+      createTaskDomElement(task.getNameNoSpace(), task.getName(), task.getDate())
     );
   });
 };
@@ -211,7 +214,7 @@ allTask.addEventListener("click", () => {
   projects.forEach((project) => {
     project.getTasks().forEach((task) => {
       taskContainer.appendChild(
-        createTaskDomElement(task.getNameNoSpace(), task.getName())
+        createTaskDomElement(task.getNameNoSpace(), task.getName(), task.getDate())
       );
     });
   });
