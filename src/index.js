@@ -14,6 +14,7 @@ const projectFormCancel = document.querySelector("#projectFormCancel");
 const projectInput = document.querySelector("#projectInput");
 const projectContainer = document.querySelector("#projectContainer");
 const allTask = document.querySelector("#allTask");
+const today = document.querySelector("#today");
 
 const showForm = (form) => {
   if (form.classList.contains("show")) {
@@ -154,14 +155,17 @@ const loadProject = (project) => {
     taskButton.classList.remove("show");
   }
 };
-
 const loadTasks = (project, container) => {
   resetContainer(container);
 
   const tasks = project.getTasks();
   tasks.forEach((task) => {
     container.appendChild(
-      createTaskDomElement(task.getNameNoSpace(), task.getName(), task.getDate())
+      createTaskDomElement(
+        task.getNameNoSpace(),
+        task.getName(),
+        task.getDate()
+      )
     );
   });
 };
@@ -214,8 +218,39 @@ allTask.addEventListener("click", () => {
   projects.forEach((project) => {
     project.getTasks().forEach((task) => {
       taskContainer.appendChild(
-        createTaskDomElement(task.getNameNoSpace(), task.getName(), task.getDate())
+        createTaskDomElement(
+          task.getNameNoSpace(),
+          task.getName(),
+          task.getDate()
+        )
       );
+    });
+  });
+});
+today.addEventListener("click", () => {
+  resetContainer(taskContainer);
+  if (taskButton.classList.contains("show") == false) {
+    taskButton.classList.add("show");
+  }
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  const formattedDate = `${year}-${month}-${day}`;
+  console.log(formattedDate);
+  projects.forEach((project) => {
+    project.getTasks().forEach((task) => {
+      if (task.getDate() == formattedDate) {
+        console.log('hi')
+        taskContainer.appendChild(
+          createTaskDomElement(
+            task.getNameNoSpace(),
+            task.getName(),
+            task.getDate()
+          )
+        );
+      }
     });
   });
 });
