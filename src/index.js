@@ -1,5 +1,6 @@
 import Task from "./_task";
 import Project from "./_project";
+import Dom from "./_dom"
 
 const projects = [new Project("Default")];
 const taskButton = document.querySelector("#taskButton");
@@ -16,23 +17,6 @@ const projectContainer = document.querySelector("#projectContainer");
 const allTask = document.querySelector("#allTask");
 const today = document.querySelector("#today");
 const nextSevenDays = document.querySelector("#nextSevenDays");
-
-const showForm = (form) => {
-  if (form.classList.contains("show")) {
-    form.classList.remove("show");
-  }
-};
-
-const cancel = (form, input) => {
-  form.classList.add("show");
-  input.value = "";
-};
-
-const resetContainer = (container) => {
-  while (container.firstChild) {
-    container.removeChild(container.firstChild);
-  }
-};
 
 const getTask = (idName) => {
   const found = projects.find((project) => project.getSelect() == true);
@@ -70,7 +54,7 @@ const createProjectDomElement = (idName, name) => {
     projects.splice(projectNum, 1);
     console.log(projects);
     projectCard.remove();
-    resetContainer(taskContainer);
+    Dom.resetContainer(taskContainer);
     if (taskButton.classList.contains("show") == false) {
       taskButton.classList.add("show");
     }
@@ -157,7 +141,7 @@ const loadProject = (project) => {
   }
 };
 const loadTasks = (project, container) => {
-  resetContainer(container);
+  Dom.resetContainer(container);
 
   const tasks = project.getTasks();
   tasks.forEach((task) => {
@@ -172,18 +156,18 @@ const loadTasks = (project, container) => {
 };
 
 projectButton.addEventListener("click", () => {
-  showForm(projectForm);
+  Dom.showForm(projectForm);
 });
 taskButton.addEventListener("click", () => {
-  showForm(taskForm);
+  Dom.showForm(taskForm);
 });
 projectFormCancel.addEventListener("click", (event) => {
   event.preventDefault();
-  cancel(projectForm, projectInput);
+  Dom.cancel(projectForm, projectInput);
 });
 taskFormCancel.addEventListener("click", (event) => {
   event.preventDefault();
-  cancel(taskForm, taskInput);
+  Dom.cancel(taskForm, taskInput);
 });
 
 projectFormAdd.addEventListener("click", (event) => {
@@ -195,7 +179,7 @@ projectFormAdd.addEventListener("click", (event) => {
 
   projects.push(new Project(nameNoSpace));
   projectContainer.appendChild(domElm);
-  cancel(projectForm, projectInput);
+  Dom.cancel(projectForm, projectInput);
 });
 taskFormAdd.addEventListener("click", (event) => {
   event.preventDefault();
@@ -207,11 +191,11 @@ taskFormAdd.addEventListener("click", (event) => {
   found.addItem(new Task(nameNoSpace, name));
 
   loadTasks(found, taskContainer);
-  cancel(taskForm, taskInput);
+  Dom.cancel(taskForm, taskInput);
 });
 
 allTask.addEventListener("click", () => {
-  resetContainer(taskContainer);
+  Dom.resetContainer(taskContainer);
   if (taskButton.classList.contains("show") == false) {
     taskButton.classList.add("show");
   }
@@ -229,7 +213,7 @@ allTask.addEventListener("click", () => {
   });
 });
 today.addEventListener("click", () => {
-  resetContainer(taskContainer);
+  Dom.resetContainer(taskContainer);
   if (taskButton.classList.contains("show") == false) {
     taskButton.classList.add("show");
   }
@@ -255,7 +239,7 @@ today.addEventListener("click", () => {
   });
 });
 nextSevenDays.addEventListener("click", () => {
-  resetContainer(taskContainer);
+  Dom.resetContainer(taskContainer);
   if (taskButton.classList.contains("show") == false) {
     taskButton.classList.add("show");
   }
