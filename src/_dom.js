@@ -10,9 +10,16 @@ const Dom = (() => {
     input.value = "";
   };
 
+  const resetContainer = (container) => {
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
+  };
+
   return {
     showForm: showForm,
-    cancel: cancel
+    cancel: cancel,
+    resetContainer: resetContainer
   }
 })();
 
