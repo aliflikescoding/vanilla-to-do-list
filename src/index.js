@@ -18,7 +18,7 @@ const allTask = document.querySelector("#allTask");
 const today = document.querySelector("#today");
 const nextSevenDays = document.querySelector("#nextSevenDays");
 
-const getTask = (idName) => {
+const findTask = (idName) => {
   const found = projects.find((project) => project.getSelect() == true);
   const task = found.getTasks().find((task) => task.getNameNoSpace() == idName);
 
@@ -96,13 +96,13 @@ const createTaskDomElement = (idName, name, date) => {
 
   taskDate.addEventListener("change", () => {
     const newDate = taskDate.value;
-    const task = getTask(idName);
+    const task = findTask(idName);
     task.changeDate(newDate);
     console.log(task);
   });
 
   taskButton.addEventListener("click", () => {
-    const task = getTask(idName);
+    const task = findTask(idName);
     task.changeStatus();
     console.log(task);
   });
