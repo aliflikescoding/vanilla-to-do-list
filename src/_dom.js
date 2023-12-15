@@ -78,13 +78,11 @@ const Dom = (() => {
       const newDate = taskDate.value;
       const task = findTask(projectArray, idName);
       task.changeDate(newDate);
-      console.log(task);
     });
   
     taskButton.addEventListener("click", () => {
       const task = findTask(projectArray, idName);
       task.changeStatus();
-      console.log(task);
     });
   
     taskIcon.addEventListener("click", () => {
@@ -140,7 +138,6 @@ const Dom = (() => {
         }
       });
       projects.splice(projectNum, 1);
-      console.log(projects);
       projectCard.remove();
       Dom.resetContainer(taskContainer);
       if (taskButton.classList.contains("show") == false) {
