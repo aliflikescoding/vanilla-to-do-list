@@ -5,8 +5,14 @@ const Dom = (() => {
     }
   };
 
+  const cancel = (form, input) => {
+    form.classList.add("show");
+    input.value = "";
+  };
+
   return {
     showForm: showForm,
+    cancel: cancel
   }
 })();
 
