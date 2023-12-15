@@ -132,12 +132,12 @@ const Dom = (() => {
     projectIcon.textContent = "II";
     projectIcon.addEventListener("click", () => {
       let projectNum;
-      projects.forEach((project, index) => {
+      projectArray.forEach((project, index) => {
         if (project.getName() == idName) {
           projectNum = index;
         }
       });
-      projects.splice(projectNum, 1);
+      projectArray.splice(projectNum, 1);
       projectCard.remove();
       Dom.resetContainer(taskContainer);
       if (taskButton.classList.contains("show") == false) {
