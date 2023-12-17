@@ -114,7 +114,7 @@ const Dom = (() => {
   
     taskIcon.addEventListener("click", () => {
       const projectArray = Dom.getProperObjectArray(JSON.parse(localStorage.getItem("projects")));
-      const tasks = projects
+      const tasks = projectArray
         .find((project) => project.getSelect() == true)
         .getTasks();
       let taskNum;
