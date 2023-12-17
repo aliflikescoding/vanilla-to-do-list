@@ -1,4 +1,28 @@
+import Project from "./_project";
+import Task from "./_task";
+
 const Dom = (() => {
+  const getProperObjectArray = (jsonArray) => {
+    const newArray = [];
+    
+    jsonArray.forEach(json => {
+      const project = new Project(json.nameNoSpace, json.name);
+      project.selected = json.selected;
+  
+      json.tasks.forEach(taskJson => {
+        const task = new Task(taskJson.nameNoSpace, taskJson.name);
+        task.date = taskJson.date;
+        task.done = taskJson.done;
+        
+        project.addItem(task);
+      });
+      
+      newArray.push(project);
+    });
+  
+    return newArray;
+  };
+
   const showForm = (form) => {
     if (form.classList.contains("show")) {
       form.classList.remove("show");
@@ -23,7 +47,7 @@ const Dom = (() => {
     return task;
   };
 
-  const loadTasks = (project, container, projectArray) => {
+  const loadTasks = (project, container) => {
     Dom.resetContainer(container);
   
     const tasks = project.getTasks();
@@ -32,8 +56,7 @@ const Dom = (() => {
         Dom.createTaskDomElement(
           task.getNameNoSpace(),
           task.getName(),
-          task.getDate(),
-          projectArray
+          task.getDate()
         )
       );
     });
@@ -47,7 +70,7 @@ const Dom = (() => {
     }
   };
 
-  const createTaskDomElement = (idName, name, date, projectArray) => {
+  const createTaskDomElement = (idName, name, date) => {
     const taskCard = document.createElement("div");
     const taskContent = document.createElement("div");
     const taskContent2 = document.createElement("div");
@@ -75,17 +98,22 @@ const Dom = (() => {
     //events
   
     taskDate.addEventListener("change", () => {
+      const projectArray = Dom.getProperObjectArray(JSON.parse(localStorage.getItem("projects")));
       const newDate = taskDate.value;
       const task = findTask(projectArray, idName);
       task.changeDate(newDate);
+      localStorage.setItem("projects", JSON.stringify(projectArray));
     });
   
     taskButton.addEventListener("click", () => {
+      const projectArray = Dom.getProperObjectArray(JSON.parse(localStorage.getItem("projects")));
       const task = findTask(projectArray, idName);
       task.changeStatus();
+      localStorage.setItem("projects", JSON.stringify(projectArray));
     });
   
     taskIcon.addEventListener("click", () => {
+      const projectArray = Dom.getProperObjectArray(JSON.parse(localStorage.getItem("projects")));
       const tasks = projects
         .find((project) => project.getSelect() == true)
         .getTasks();
@@ -97,6 +125,7 @@ const Dom = (() => {
       });
       tasks.splice(taskNum, 1);
       taskCard.remove();
+      localStorage.setItem("projects", JSON.stringify(projectArray));
     });
   
     // Structure elements
@@ -111,7 +140,7 @@ const Dom = (() => {
     return taskCard;
   };
 
-  const createProjectDomElement = (idName, name, projectArray) => {
+  const createProjectDomElement = (idName, name) => {
     let projectCard = document.createElement("div");
     projectCard.classList.add("project-card");
     let h1 = document.createElement("h1");
@@ -119,6 +148,7 @@ const Dom = (() => {
     h1.textContent = name;
     h1.setAttribute("id", idName);
     h1.addEventListener("click", () => {
+      const projectArray = Dom.getProperObjectArray(JSON.parse(localStorage.getItem("projects")));
       const id = h1.id;
       const found = projectArray.find((project) => project.getName() == id);
       const found_2 = projectArray.find((project) => project.getSelect() == true);
@@ -126,11 +156,13 @@ const Dom = (() => {
         found_2.select();
       }
       found.select();
+      localStorage.setItem("projects", JSON.stringify(projectArray));
       loadProject(found, projectArray);
     });
     let projectIcon = document.createElement("i");
     projectIcon.textContent = "II";
     projectIcon.addEventListener("click", () => {
+      const projectArray = Dom.getProperObjectArray(JSON.parse(localStorage.getItem("projects")));
       let projectNum;
       projectArray.forEach((project, index) => {
         if (project.getName() == idName) {
@@ -139,6 +171,7 @@ const Dom = (() => {
       });
       projectArray.splice(projectNum, 1);
       projectCard.remove();
+      localStorage.setItem("projects", JSON.stringify(projectArray));
       Dom.resetContainer(taskContainer);
       if (taskButton.classList.contains("show") == false) {
         taskButton.classList.add("show");
@@ -157,7 +190,8 @@ const Dom = (() => {
     resetContainer: resetContainer,
     createTaskDomElement: createTaskDomElement,
     createProjectDomElement: createProjectDomElement,
-    loadTasks: loadTasks
+    loadTasks: loadTasks,
+    getProperObjectArray: getProperObjectArray
   }
 })();
 

@@ -1,8 +1,7 @@
 import Task from "./_task";
 import Project from "./_project";
-import Dom from "./_dom"
+import Dom from "./_dom";
 
-const projects = [new Project("Default")];
 const taskButton = document.querySelector("#taskButton");
 const taskForm = document.querySelector("#taskForm");
 const taskFormCancel = document.querySelector("#taskFormCancel");
@@ -18,10 +17,42 @@ const allTask = document.querySelector("#allTask");
 const today = document.querySelector("#today");
 const nextSevenDays = document.querySelector("#nextSevenDays");
 
+if (localStorage.getItem("projects") == null) {
+  localStorage.setItem("projects", JSON.stringify([]));
+}
 
+const generateRefresh = () => {
+  const projects = Dom.getProperObjectArray(
+    JSON.parse(localStorage.getItem("projects"))
+  );
 
+  if (projects != []) {
+    Dom.resetContainer(projectContainer);
+    
+    projects.forEach((project) => {
+      projectContainer.appendChild(Dom.createProjectDomElement(project.nameNoSpace, project.name));
+    });
 
-projectContainer.appendChild(Dom.createProjectDomElement("Default", "Default", projects));
+    Dom.resetContainer(taskContainer);
+    if (taskButton.classList.contains("show") == false) {
+      taskButton.classList.add("show");
+    }
+
+    projects.forEach((project) => {
+      project.getTasks().forEach((task) => {
+        taskContainer.appendChild(
+          Dom.createTaskDomElement(
+            task.getNameNoSpace(),
+            task.getName(),
+            task.getDate()
+          )
+        );
+      });
+    });
+  }
+};
+window.onload = generateRefresh;
+window.addEventListener("load", generateRefresh);
 
 projectButton.addEventListener("click", () => {
   Dom.showForm(projectForm);
@@ -39,17 +70,24 @@ taskFormCancel.addEventListener("click", (event) => {
 });
 
 projectFormAdd.addEventListener("click", (event) => {
+  const projects = Dom.getProperObjectArray(
+    JSON.parse(localStorage.getItem("projects"))
+  );
   event.preventDefault();
 
   const nameNoSpace = projectInput.value.replace(/\s/g, "-");
   const name = projectInput.value;
-  const domElm = Dom.createProjectDomElement(nameNoSpace, name, projects);
+  const domElm = Dom.createProjectDomElement(nameNoSpace, name);
 
-  projects.push(new Project(nameNoSpace));
+  projects.push(new Project(nameNoSpace, name));
   projectContainer.appendChild(domElm);
   Dom.cancel(projectForm, projectInput);
+  localStorage.setItem("projects", JSON.stringify(projects));
 });
 taskFormAdd.addEventListener("click", (event) => {
+  const projects = Dom.getProperObjectArray(
+    JSON.parse(localStorage.getItem("projects"))
+  );
   event.preventDefault();
   const found = projects.find((project) => project.getSelect() == true);
 
@@ -60,9 +98,14 @@ taskFormAdd.addEventListener("click", (event) => {
 
   Dom.loadTasks(found, taskContainer, projects);
   Dom.cancel(taskForm, taskInput);
+  localStorage.setItem("projects", JSON.stringify(projects));
 });
 
 allTask.addEventListener("click", () => {
+  const projects = Dom.getProperObjectArray(
+    JSON.parse(localStorage.getItem("projects"))
+  );
+
   Dom.resetContainer(taskContainer);
   if (taskButton.classList.contains("show") == false) {
     taskButton.classList.add("show");
@@ -74,14 +117,17 @@ allTask.addEventListener("click", () => {
         Dom.createTaskDomElement(
           task.getNameNoSpace(),
           task.getName(),
-          task.getDate(),
-          projects
+          task.getDate()
         )
       );
     });
   });
 });
 today.addEventListener("click", () => {
+  const projects = Dom.getProperObjectArray(
+    JSON.parse(localStorage.getItem("projects"))
+  );
+
   Dom.resetContainer(taskContainer);
   if (taskButton.classList.contains("show") == false) {
     taskButton.classList.add("show");
@@ -99,8 +145,7 @@ today.addEventListener("click", () => {
           Dom.createTaskDomElement(
             task.getNameNoSpace(),
             task.getName(),
-            task.getDate(),
-            projects
+            task.getDate()
           )
         );
       }
@@ -108,6 +153,10 @@ today.addEventListener("click", () => {
   });
 });
 nextSevenDays.addEventListener("click", () => {
+  const projects = Dom.getProperObjectArray(
+    JSON.parse(localStorage.getItem("projects"))
+  );
+
   Dom.resetContainer(taskContainer);
   if (taskButton.classList.contains("show") == false) {
     taskButton.classList.add("show");
@@ -125,8 +174,7 @@ nextSevenDays.addEventListener("click", () => {
           Dom.createTaskDomElement(
             task.getNameNoSpace(),
             task.getName(),
-            task.getDate(),
-            projects
+            task.getDate()
           )
         );
       }

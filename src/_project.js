@@ -1,4 +1,5 @@
-function Project(name) {
+function Project(nameNoSpace, name) {
+  this.nameNoSpace = nameNoSpace;
   this.name = name;
   this.tasks = [];
   this.selected = false;
