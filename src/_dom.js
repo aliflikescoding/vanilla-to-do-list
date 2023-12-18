@@ -2,6 +2,19 @@ import Project from "./_project";
 import Task from "./_task";
 
 const Dom = (() => {
+  function addTrashIcon() {
+    // Create i element
+    const i = document.createElement('i');
+  
+    // Add Bootstrap trash icon classes
+    i.classList.add('bi', 'bi-trash-fill');
+  
+    // Append icon element to DOM
+    return i
+  }
+  
+  addTrashIcon();
+
   const getProperObjectArray = (jsonArray) => {
     const newArray = [];
     
@@ -93,7 +106,7 @@ const Dom = (() => {
     }
     taskDate.id = `date-${idName}`;
   
-    taskIcon.textContent = "II";
+    taskIcon.appendChild(addTrashIcon());
   
     //events
   
@@ -160,7 +173,7 @@ const Dom = (() => {
       loadProject(found, projectArray);
     });
     let projectIcon = document.createElement("i");
-    projectIcon.textContent = "II";
+    projectIcon.appendChild(addTrashIcon());
     projectIcon.addEventListener("click", () => {
       const projectArray = Dom.getProperObjectArray(JSON.parse(localStorage.getItem("projects")));
       let projectNum;
