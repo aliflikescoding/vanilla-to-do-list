@@ -12,8 +12,6 @@ const Dom = (() => {
     // Append icon element to DOM
     return i
   }
-  
-  addTrashIcon();
 
   const getProperObjectArray = (jsonArray) => {
     const newArray = [];
@@ -96,6 +94,7 @@ const Dom = (() => {
     taskCard.id = `${idName}`;
    
     taskButton.type = "button";
+    taskButton.classList.add("task-button");
   
     taskLabel.htmlFor = `${idName}`;
     taskLabel.textContent = `${name}`;
@@ -105,8 +104,10 @@ const Dom = (() => {
       taskDate.value = date;
     }
     taskDate.id = `date-${idName}`;
-  
-    taskIcon.appendChild(addTrashIcon());
+    
+    const trashIcon = addTrashIcon();
+    trashIcon.classList.add("task-icon")
+    taskIcon.appendChild(trashIcon);
   
     //events
   
