@@ -17,6 +17,10 @@ Task.prototype.getDate = function () {
   return this.date;
 };
 
+Task.prototype.getDone = function () {
+  return this.done;
+};
+
 Task.prototype.changeStatus = function () {
   if (this.done == false) {
     this.done = true;

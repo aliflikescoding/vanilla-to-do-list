@@ -46,7 +46,8 @@ const generateRefresh = () => {
           Dom.createTaskDomElement(
             task.getNameNoSpace(),
             task.getName(),
-            task.getDate()
+            task.getDate(),
+            task.getDone()
           )
         );
       });
@@ -120,7 +121,8 @@ allTask.addEventListener("click", () => {
         Dom.createTaskDomElement(
           task.getNameNoSpace(),
           task.getName(),
-          task.getDate()
+          task.getDate(),
+          task.getDone()
         )
       );
     });
@@ -148,7 +150,8 @@ today.addEventListener("click", () => {
           Dom.createTaskDomElement(
             task.getNameNoSpace(),
             task.getName(),
-            task.getDate()
+            task.getDate(),
+            task.getDone()
           )
         );
       }
@@ -177,7 +180,8 @@ nextSevenDays.addEventListener("click", () => {
           Dom.createTaskDomElement(
             task.getNameNoSpace(),
             task.getName(),
-            task.getDate()
+            task.getDate(),
+            task.getDone()
           )
         );
       }
