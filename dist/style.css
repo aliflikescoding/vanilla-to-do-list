@@ -117,12 +117,14 @@ body {
 .sidebar {
   grid-area: 2 / 1 / 6 / 2;
   display: flex;
+  background-color: var(--background);
+  border-radius: 15px;
   flex-direction: column;
+  padding: 5px 25px;
 }
 
 .sidebar > * {
   margin-top: 15px;
-  margin-left: 15px;
 }
 .sidebar > * > * {
   margin-top: 15px;
