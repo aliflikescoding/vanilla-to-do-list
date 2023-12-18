@@ -16,6 +16,8 @@ const projectContainer = document.querySelector("#projectContainer");
 const allTask = document.querySelector("#allTask");
 const today = document.querySelector("#today");
 const nextSevenDays = document.querySelector("#nextSevenDays");
+const sideBar = document.querySelector("#sideBar");
+const sideBarButton = document.querySelector("#sideBarButton");
 
 if (localStorage.getItem("projects") == null) {
   localStorage.setItem("projects", JSON.stringify([]));
@@ -53,6 +55,7 @@ const generateRefresh = () => {
 };
 window.onload = generateRefresh;
 window.addEventListener("load", generateRefresh);
+
 
 projectButton.addEventListener("click", () => {
   Dom.showForm(projectForm);
@@ -181,3 +184,6 @@ nextSevenDays.addEventListener("click", () => {
     });
   });
 });
+sideBarButton.addEventListener("click", () => {
+  Dom.showOrHideSideBar(sideBar);
+})

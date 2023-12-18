@@ -2,6 +2,15 @@ import Project from "./_project";
 import Task from "./_task";
 
 const Dom = (() => {
+  const showOrHideSideBar = (sideBar) => {
+    if (sideBar.classList.contains("show")) {
+      sideBar.classList.remove("show");
+    }
+    else {
+      sideBar.classList.add("show")
+    }
+  }
+
   function addTrashIcon() {
     // Create i element
     const i = document.createElement('i');
@@ -205,7 +214,8 @@ const Dom = (() => {
     createTaskDomElement: createTaskDomElement,
     createProjectDomElement: createProjectDomElement,
     loadTasks: loadTasks,
-    getProperObjectArray: getProperObjectArray
+    getProperObjectArray: getProperObjectArray,
+    showOrHideSideBar: showOrHideSideBar
   }
 })();
 
