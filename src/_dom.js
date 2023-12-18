@@ -150,7 +150,7 @@ const Dom = (() => {
     h1.addEventListener("click", () => {
       const projectArray = Dom.getProperObjectArray(JSON.parse(localStorage.getItem("projects")));
       const id = h1.id;
-      const found = projectArray.find((project) => project.getName() == id);
+      const found = projectArray.find((project) => project.getNameNoSpace() == id);
       const found_2 = projectArray.find((project) => project.getSelect() == true);
       if (found_2) {
         found_2.select();

@@ -5,6 +5,10 @@ function Project(nameNoSpace, name) {
   this.selected = false;
 }
 
+Project.prototype.getNameNoSpace = function () {
+  return this.nameNoSpace;  
+};
+
 Project.prototype.getName = function () {
   return this.name;  
 };
