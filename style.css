@@ -68,11 +68,12 @@ table {
 
 :root {
   --background: #ffff;
+  --background-shade: #d1d1d1;
   --text: #40404a;
   --secondary: #ca8bfe;
   --primary: #a18aff;
-  --error: #fd4743;
-  --success: #64e358;
+  --error: #fd99af;
+  --success: #3fd4f4;
 }
 
 body {
@@ -110,6 +111,10 @@ body {
 
 .show {
   display: none;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  order: -1;
   pointer-events: none;
   opacity: 0;
 }
@@ -190,6 +195,43 @@ body {
   margin-left: 10px;
 }
 
+#projectForm {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary);
+  border-radius: 15px;
+  color: var(--background);
+}
+
+.form-input > label {
+  font-size: 1.5rem;
+  font-weight: 550;
+}
+
+.form-input > input[type="text"] {
+  background-color: var(--background);
+  border: none;
+  width: 150px;
+  font-size: 1.2rem;
+  padding: 0 25px;
+  height: 30px;
+  border-radius: 15px;
+}
+
+.form-input > input[type="text"]:focus {
+  outline: none;
+}
+
+#projectForm > *:last-child {
+  margin-top: 10px;
+  display: flex;
+}
+
+#projectForm > *:last-child > *:last-child {
+  margin-left: 5px;
+}
+
 /* task styling */
 .task-card {
   background-color: var(--background);
@@ -257,4 +299,41 @@ body {
   height: 30px;
   width: 30px;
   border-radius: 50%;
+}
+
+#taskForm {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary);
+  border-radius: 15px;
+  color: var(--background);
+}
+
+.task-input > label {
+  font-size: 1.5rem;
+  font-weight: 550;
+}
+
+.task-input > input[type="text"] {
+  background-color: var(--background);
+  border: none;
+  width: 150px;
+  font-size: 1.2rem;
+  padding: 0 25px;
+  height: 30px;
+  border-radius: 15px;
+}
+
+.task-input > input[type="text"]:focus {
+  outline: none;
+}
+
+#taskForm > *:last-child {
+  margin-top: 10px;
+  display: flex;
+}
+
+#taskForm > *:last-child > *:last-child {
+  margin-left: 5px;
 }
