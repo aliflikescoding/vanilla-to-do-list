@@ -103,6 +103,7 @@ body {
 
 .sidebar > * {
   margin-top: 15px;
+  margin-left: 15px;
 }
 .sidebar > * > * {
   margin-top: 15px;
