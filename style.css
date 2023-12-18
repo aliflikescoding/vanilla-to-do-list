@@ -49,8 +49,16 @@ table {
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap");
 
+:root {
+  --background: #ffff;
+  --text: #717082;
+  --secondary: #ca8bfe;
+  --primary: #a18aff;
+}
+
 body {
   font-family: "Nunito", sans-serif;
+  color: var(--text);
   font-size: 1.5rem;
   display: grid;
   grid-template-columns: 0.65fr repeat(4, 1fr);
