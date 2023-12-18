@@ -360,3 +360,11 @@ body {
 #taskForm > *:last-child > *:last-child {
   margin-left: 5px;
 }
+
+.done {
+  text-decoration: line-through var(--secondary) 5px;  
+}
+
+.done-two {
+  background-color: var(--secondary); 
+}
