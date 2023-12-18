@@ -144,12 +144,6 @@ body {
   width: 75%;
 }
 
-.task-card {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-}
-
 #taskForm {
   display: flex;
   flex-direction: column;
@@ -165,6 +159,33 @@ body {
 
 .project-card > * {
   margin-left: 10px;
+}
+
+/* task styling */
+.task-card {
+  background-color: var(--background);
+  padding: 10px 15px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-card > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-card > * > *:last-child {
+  margin-left: 15px;
+}
+
+.task-icon {
+  color: var(--secondary);
+}
+
+#taskContainer > * {
+  margin: 5px 0;
 }
 
 /* button styling */
@@ -199,4 +220,12 @@ body {
 
 .button-form {
   font-size: 1rem;
+}
+
+.task-button {
+  background: none;
+  border: 2px solid var(--secondary);
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
 }
