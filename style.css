@@ -130,3 +130,13 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+/* project styling */
+.project-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-card > * {
+  margin-left: 10px;
+}
