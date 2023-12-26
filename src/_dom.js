@@ -129,7 +129,7 @@ const Dom = (() => {
     }
 
     const trashIcon = addTrashIcon();
-    trashIcon.classList.add("task-icon");
+    trashIcon.classList.add("clickable");
     taskIcon.appendChild(trashIcon);
 
     //events
