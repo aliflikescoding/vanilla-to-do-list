@@ -371,8 +371,8 @@ body {
 }
 
 .clickable:hover {
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
+  -webkit-transform: scale(0.95);
+  transform: scale(0.95);
   opacity: 90%;
   transition: .3s ease-in-out;
 }
