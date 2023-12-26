@@ -371,7 +371,10 @@ body {
 }
 
 .clickable:hover {
-  color: var(--secondary);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  opacity: 90%;
+  transition: .3s ease-in-out;
 }
 
 .secondary-color {
