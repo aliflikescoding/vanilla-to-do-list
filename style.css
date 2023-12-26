@@ -373,3 +373,7 @@ body {
 .clickable:hover {
   color: var(--secondary);
 }
+
+.primary-color {
+  color: var(--primary);
+}
