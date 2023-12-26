@@ -368,3 +368,12 @@ body {
 .done-two {
   background-color: var(--secondary); 
 }
+
+/* design  classes */
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  color: var(--secondary);
+}

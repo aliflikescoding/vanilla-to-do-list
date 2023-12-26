@@ -220,6 +220,7 @@ const Dom = (() => {
       loadProject(found, projectArray);
     });
     let projectIcon = document.createElement("i");
+    projectIcon.classList.add("clickable");
     projectIcon.appendChild(addTrashIcon());
     projectIcon.addEventListener("click", () => {
       const projectArray = Dom.getProperObjectArray(
