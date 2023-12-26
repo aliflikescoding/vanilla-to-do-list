@@ -150,8 +150,8 @@ body {
 }
 
 .side-bar-title {
-  font-size: 2.5rem;
-  font-weight: 650;
+  font-size: 2.1rem;
+  font-weight: 300;
 }
 
 .side-bar-text {
@@ -379,6 +379,18 @@ body {
 
 .secondary-color {
   color: var(--secondary);
+}
+
+.primary-color {
+  color: var(--primary);
+}
+
+.error-color {
+  color: var(--error);
+}
+
+.success-color {
+  color: var(--success);
 }
 
 .button-hamburger {
