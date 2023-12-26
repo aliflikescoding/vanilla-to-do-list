@@ -129,7 +129,7 @@ const Dom = (() => {
     }
 
     const trashIcon = addTrashIcon();
-    trashIcon.classList.add("clickable", "primary-color");
+    trashIcon.classList.add("clickable", "secondary-color");
     taskIcon.appendChild(trashIcon);
 
     //events
@@ -220,7 +220,7 @@ const Dom = (() => {
       loadProject(found, projectArray);
     });
     let projectIcon = document.createElement("i");
-    projectIcon.classList.add("clickable", "primary-color");
+    projectIcon.classList.add("clickable", "secondary-color");
     projectIcon.appendChild(addTrashIcon());
     projectIcon.addEventListener("click", () => {
       const projectArray = Dom.getProperObjectArray(
