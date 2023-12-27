@@ -188,6 +188,8 @@ const Dom = (() => {
     taskContent2.appendChild(taskDate);
     taskContent2.appendChild(taskIcon);
 
+    taskContent.classList.add("task-content-1");
+    taskContent2.classList.add("task-content-2");
     taskCard.appendChild(taskContent);
     taskCard.appendChild(taskContent2);
 
@@ -215,6 +217,7 @@ const Dom = (() => {
       if (found_2) {
         found_2.select();
       }
+      console.log(found)
       found.select();
       localStorage.setItem("projects", JSON.stringify(projectArray));
       loadProject(found, projectArray);
