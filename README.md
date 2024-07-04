@@ -4,7 +4,7 @@
 
 ## Output
 
-Visit [The Live Page](https://aliflikescoding.github.io/vanilla-restaurant-page/) to view the details
+Visit [The Live Page](https://aliflikescoding.github.io/vanilla-to-do-list/) to view the details
 
 ## Description
 
@@ -15,7 +15,7 @@ An assigned project from TOP (the odin project) course. You are tasked to build 
 In this project we used vast amount of modern technologies such as:
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- [SASS](https://sass-lang.com/)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
   
 ## 📖 Additional information
